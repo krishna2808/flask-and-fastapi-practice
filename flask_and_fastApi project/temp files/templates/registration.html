@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Registration page {% endblock title %}
+
+{% block content %}
+ <form action="/sign_up" method="POST">
+ 	{{ form.hidden_tag() }}
+   <p> 
+   	{{ form.user_name.label }}
+ 
+    {{ form.user_name }}
+  </p>
+
+
+ <p> 
+      {{ form.mobile_number.label }}
+      {{ form.mobile_number }}
+  </p> 
+
+
+ <p> 
+      {{ form.password.label }}
+      {{ form.password }}
+  </p> 
+
+
+
+
+  <p> 
+      {{ form.submit.label }}
+      {{ form.submit }}
+  </p> 
+   
+
+
+
+
+
+
+
+
+ </form>
+ {% if success != None %}
+      {{ success }}
+ {% endif %}
+
+  
+
+{% endblock %}

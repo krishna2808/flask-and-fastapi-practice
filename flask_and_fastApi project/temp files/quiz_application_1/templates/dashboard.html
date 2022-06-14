@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} DashBoard {% endblock title %}
+
+{% block content %}
+
+
+
+
+
+{% with messages = get_flashed_messages() %}
+<br>
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+
+<br>
+
+
+
+    <a href="{{ url_for('add_post', id=id) }}">  Add Post </a>  <br>
+    <a href="{{ url_for('show_post', id=id) }}">  Show your Post </a>  <br>
+
+    <a href="{{ url_for('profile', id=id)  }}"> Profile </a> <br>
+
+    <a href="{{ url_for('log_out', id=id)  }}"> LogOut </a>
+
+    
+
+
+
+{% if all_post %}
+
+    {% for post in all_post %}
+
+     <div>  
+           <p> Author :  {{ user_obj.query.get(post.author).user_name }}</p>
+           <p> title :  {{ post.title }}</p>
+           
+
+           <img src="{{ url_for('static', filename='/images/' + post.post_pic) }}" alt="image " width="400" height="400"/>
+
+
+           <p> content :  {{ post.content }}</p>
+           <p> Date  :  {{ post.date_posted }}</p>
+           
+
+     </div> <br> <br >
+    {% endfor %}
+
+
+{% endif %}
+
+  
+
+{% endblock %}
